@@ -1,0 +1,20 @@
+<div class="middle on">
+  <div class="wx_search">
+      <input type="text" [(ngModel)]="searchText" placeholder="搜索" />
+  </div>
+  <div class="office_text" #scrollBox>
+      <ul class="friends_list">
+        <li *ngFor="let group of groups">
+            <p>{{group.title}}</p>
+            <div class="friends_box" *ngFor="let item of group.friends"  (click)="showDetail(item)">
+                <div class="user_head">
+                    <app-head [head]="item.head" [name]="item.remark==null?item.nickName:item.remark"></app-head>
+                </div>
+                <div class="friends_text">
+                    <p class="user_name">{{item.remark==null?item.nickName:item.remark}}</p>
+                </div>
+            </div>
+        </li>
+      </ul>
+  </div>
+</div>

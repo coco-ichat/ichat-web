@@ -1,0 +1,66 @@
+<div class="con_detail" [style.width]="isShow?'250px':'0'">
+  <div class="row" style="border-bottom: 1px solid #e7e7e7;height: 62px;margin-bottom: 0px;overflow: hidden;">
+    <label class="col-md-12" style="line-height: 62px;font-size: 18px;color: #444444;margin:0px;font-weight: 400;width:150px;">{{title}}</label>
+    <i class="icon ion-md-more" title="更多设置" [matMenuTriggerFor]="belowMenu"  *ngIf="conversation&&conversation.id>0"></i>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <div class="info-setting">
+        <div *ngIf="conversation&&conversation.id>0&&conversation.groupId>0">
+            <button mat-menu-item *ngIf="isCreator" (click)="editAdmin()">管理员管理</button>
+            <button mat-menu-item *ngIf="isAdmin" (click)="inviteUser()">邀请新成员</button>
+            <button mat-menu-item (click)="clearHistory()">清空历史对话</button>
+            <button mat-menu-item (click)="deleteConversation()">{{isCreator?'解散群组':'删除并退出'}}</button>
+        </div>
+        <div *ngIf="conversation&&conversation.id>0&&conversation.receiverId>0">
+            <button mat-menu-item (click)="clearHistory()">清空历史对话</button>
+            <button mat-menu-item (click)="deleteConversation()">删除会话</button>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+  <div class="office_text" style="width: 250px;height:calc(100% - 62px);" #scroll>
+    <div style="width: 100%;padding-top: 10px">
+      <data *ngIf="conversation">
+        <div class="row" style="border-bottom:1px solid #E7E7E7;">
+          <div class="group-head">
+            <app-head [head]="conversation.head" [name]="conversation.name" class="head_label"></app-head>
+            <span *ngIf="conversation&&conversation.groupId>0&&isAdmin" (click)="updateHead()"><i class="icon ion-md-image"></i></span>
+          </div>
+          <div class="conversation-name">
+            <div class="editor-name" [title]="conversation&&conversation.groupId>0?'点击修改':''">{{conversation.name}}</div>
+            <i class="icon ion-md-create" *ngIf="conversation&&conversation.groupId>0&&isAdmin"  (click)="updateName($event)"></i>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-md-6">静音</label>
+          <input class="col-md-6 mui-switch mui-switch-anim" type="checkbox" [checked]="conversation.isMute"
+            (click)="mute()">
+        </div>
+        <div class="row" *ngIf="conversation.id>0">
+          <label class="col-md-6">置顶聊天</label>
+          <input class="col-md-6 mui-switch mui-switch-anim" type="checkbox" [checked]="conversation.isPinTop"
+            (click)="top()">
+        </div>
+      </data>
+      <div class="row" *ngIf="conversation&&conversation.groupId>0" style="margin-bottom: 0;">
+        <div class="col-md-12 title">
+          <label>群成员({{groupUsers?groupUsers.length:'0'}})</label>
+          <span *ngIf="isAdmin" class="user-add" title="邀请新成员" (click)="inviteUser()"></span>
+        </div>
+        <div style="clear: both;">
+          <ul style="width: 100%;">
+            <li *ngFor="let item of groupUsers" style="display: flex;">
+              <app-head [head]="item.head" [name]="item.nickName" class="group_user_head"></app-head>
+              <span class="group_user_name">{{item.nickName}}</span>
+              
+              <span [class]="item.isCreator?'group_user_creator':'group_user_admin'"
+                *ngIf="item.isCreator||item.isAdmin">{{item.isCreator?'创建者':'管理员'}}</span>
+              <span class="remove" (click)="removeUser($event,item)" *ngIf="!item.isCreator&&(isCreator||(isAdmin&&!item.isAdmin))">
+                <i class="icon ion-md-close"></i>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

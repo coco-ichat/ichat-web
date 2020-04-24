@@ -1,0 +1,23 @@
+<div class="friend-request-container">
+  <div class="row" class="box-title">
+      好友请求
+  </div>
+  <span class="close" (click)="close()"><i class="icon ion-md-close"></i></span>
+  <div class="row">
+      <ul class="friends_list" style="height:100%;" *ngIf="friendRequests">
+          <li style="border-bottom: none;">
+            <div class="friends_box" *ngFor="let model of friendRequests">
+                <div class="user_head">
+                    <app-head [head]="model.head" [name]="model.nickName"></app-head>
+                </div>
+                <div class="friends_text">
+                    <p class="user_name" style="font-size: 16px;font-weight: 500;">{{model.nickName}}</p>
+                    <p style="color: #868686">来源：{{model.content}}</p>
+                </div>
+                <button class="btn btn-add" (click)="sendFriendReq(model)" [disabled]="model.status==1?'disabled':''">{{model.status==1?'已添加':'添加'}}</button>
+            </div>
+          </li>
+      </ul>
+      <span *ngIf="!friendRequests" class="empty">暂无好友请求</span>
+  </div>
+</div>

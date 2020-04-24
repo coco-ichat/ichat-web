@@ -1,0 +1,33 @@
+<div class="add-friend-container">
+    <div class="row" class="box-title">
+        搜索好友
+    </div>
+    <span class="close" (click)="close()"><i class="icon ion-md-close"></i></span>
+    <div class="row">
+        <div class="search-bar">
+            <span class="search-icon">
+              <i class="icon ion-md-search"></i>
+            </span>
+            <input type="text"  placeholder="手机号/邮箱" [(ngModel)]="key"/>
+            <span class="clear" (click)="onClear()" [style.display]="key.length>0?'block':'none'"><i class="icon ion-md-close"></i></span>
+          </div>
+          <button class="btn btn-search" (click)="onSearch()">搜索</button>
+    </div>
+    <div class="row">
+        <ul class="friends_list" style="height:100%;" *ngIf="model">
+            <li style="border-bottom: none;">
+              <div class="friends_box">
+                  <div class="user_head">
+                      <app-head [head]="model.head" [name]="model.nickName"></app-head>
+                  </div>
+                  <div class="friends_text">
+                      <p class="user_name" style="font-size: 16px;font-weight: 500;">{{model.nickName}}</p>
+                      <p style="color: #868686">{{isEmail?'邮箱：':'手机号：'}}<span style="color:#3897F0;">{{isEmail?model.email:model.phone}}</span></p>
+                  </div>
+                  <button class="btn btn-add" (click)="sendFriendReq()" [disabled]="isAdd?'disabled':''">{{isAdd?'已添加':'添加'}}</button>
+              </div>
+            </li>
+        </ul>
+        <span *ngIf="isEmpty" class="empty">用户不存在</span>
+    </div>
+</div>

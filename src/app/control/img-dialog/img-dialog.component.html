@@ -1,0 +1,4 @@
+<span class='close' (click)="close()"><i class="icon ion-md-close"></i></span>
+<div style="width: 100%;height:100%;overflow: hidden;position: relative;z-index: 0;" #box>
+    <img src="{{img.src}}" (mousewheel)="scroll($event)" (mousedown)="move($event)" (load)="load()" #previewImg>
+</div>

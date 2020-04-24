@@ -1,0 +1,19 @@
+<div class="imgCropper">
+  <div class="corpper-modal"></div>
+  <div class="row">
+    <div class="area" (mousedown)="onmousedown($event)" #area>
+        <span class="view">
+            <img #img2/>
+        </span>
+        <span class="lt" (mousedown)="changeSize($event.target,$event,0)"></span>
+        <span class="lb" (mousedown)="changeSize($event.target,$event,1)"></span>
+        <span class="rt" (mousedown)="changeSize($event.target,$event,2)"></span>
+        <span class="rb" (mousedown)="changeSize($event.target,$event,3)"></span>
+      </div>
+    <img #img/>
+  </div>
+  <div class="row buttons">
+      <button class="btn btn-danger" (click)="close()">取消</button>
+      <button class="btn btn-success" (click)="save()">完成</button>
+  </div>
+</div>

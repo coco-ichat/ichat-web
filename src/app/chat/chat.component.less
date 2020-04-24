@@ -1,0 +1,108 @@
+.windows_body{
+    height:568px;
+  
+}
+.dropBox{
+    overflow-x: visible;  
+    position: relative;     
+}
+.modal_time{
+    position: absolute;
+    height: 20px;
+    top:0px;
+    text-align: center;
+    float: right;
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+    span{
+        position: absolute;
+        height: 25px;
+        z-index: 1;
+        margin-top: -5px;
+        background-color: #a7a7a790;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 70px;
+        opacity: 0;
+        display: none;
+        padding: 5px;
+        border-radius: 5px;
+        color: white;
+    }
+}
+
+.windows_input{
+    padding: 5px;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    textarea,.input-view{
+        white-space: pre-wrap;
+        word-break: keep-all;
+        height: 25px;
+        border: none;
+        background: transparent;
+        resize: none;
+        line-height: 25px;
+        float: left;
+        padding:0px;
+        padding-left: 20px;
+        font-size: 16px;
+        width: 455px;
+        outline: none;
+        overflow: hidden;
+        margin-bottom:7.5px;
+        
+    }
+    .icon-button{
+        color:#a5a5a5;
+        font-size:20px;
+        margin-left:15px;
+        float: left;
+        line-height:40px;
+        &:hover{
+            color:#3897F0;
+            cursor:pointer;
+        }
+        i{
+            font-size: 24px;
+            float: none;
+        }
+    }
+    .send{
+        margin-bottom: -2px;
+        color:#3897F0;
+        cursor:pointer;
+        display:none;
+    }
+}
+.drop-modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fffafabf;
+    border: 3px dashed #a2a2a2;
+    border-radius: 5px;
+    display: none;
+    span{
+        position: relative;
+        top: 50%;
+        line-height: 40px;
+        margin-top: -20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        margin: -20px auto;
+        width: 250px;
+        display: block;
+        i{
+            float:none;
+            margin-right: 10px;
+        }
+    }
+}
+

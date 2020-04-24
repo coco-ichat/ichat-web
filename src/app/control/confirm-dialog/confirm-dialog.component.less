@@ -1,0 +1,39 @@
+.confirm-container{
+    width: 300px;
+    background-color:white;
+    height:150px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    .content{
+        width:100%;
+        height:100px;
+        color:#333;
+        font-size: 18px;
+        line-height:100px;
+    }
+    .buttons{
+        height:50px;
+        .btn-info{
+            margin-right: 10px;
+            outline: none;
+            color: #808080;
+            background-color: #ffffff;
+            border-color: #BDBDBD;
+            &:hover{
+                background-color: #eaeaea;
+            }
+        }
+        .btn-danger{
+            margin-right:20px;
+            &:focus{
+                background-color: #d9534f;
+                border-color: #d43f3a;
+            }
+        }
+        .btn{
+            outline: none;
+            float:right;
+        }
+    }
+}

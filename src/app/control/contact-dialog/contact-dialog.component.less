@@ -1,0 +1,112 @@
+.item{
+    text-align:center;
+}
+
+
+.contact{
+    background-color: #f5f5f5;
+    color:black;
+    padding:20px;
+    font-size:15px;
+    position: relative;
+    .head{
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+        }
+        .item();
+    }
+    .nickname{float:left;}
+    .name{
+        float: left;
+        max-width: 120px;
+        overflow: hidden;
+        word-break: keep-all;
+        text-overflow: ellipsis;
+
+    }
+    .remark{
+        cursor: pointer;
+        input{
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #3897F0;
+            outline: none;
+            line-height: 20px;
+            width:120px;
+        }
+        .tip{
+            padding: 2px; 
+            border: 1px solid transparent;
+            border-radius: 5px;
+            &:hover{
+                border: 1px solid #a7d4ff;
+                border-radius: 5px;
+            }
+        }
+    }
+    .ion-md-male{
+        color:#3897F0;
+        margin-left: 10px;
+        float: left;
+        width: 20px;
+        text-align: center;
+    }
+    .ion-md-female{
+        color:#FF69B4;
+        margin-left: 10px;
+        float: left;
+        width: 20px;
+        text-align: center;
+    }
+    .row{
+        height: 50px;
+        line-height: 50px;
+        .btn{
+            width:250px;
+        }
+    }
+    .buttons{
+        text-align:center;
+        .btn{
+            outline: none;
+        }
+        .btn-success{
+            background-color: #3897F0;
+            border-color: #3897F0;
+            &:hover{
+                background-color: #1b8af3;
+                border-color: #1b8af3;
+            }
+        }
+    }
+    .col-md-4{
+        text-align:right;
+        color: #676767;
+        font-size: 16PX;
+    }
+    .col-md-8{
+        padding-left: 0px;
+        color: #333;
+    }
+    .close{
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 24px;
+        text-align: center;
+        font-size: 24px;
+        text-align: center;
+        color: #949494;
+        opacity: 1;
+        cursor: pointer;
+        line-height: 30px;
+        &:hover{
+            background-color:#E7505A;
+            color:white;
+        }
+    }
+}

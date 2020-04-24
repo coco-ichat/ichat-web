@@ -1,0 +1,76 @@
+<div class="talk_window" [style.display]="isShow?'block':'none'">
+  <div class="windows_top">
+      <div class="windows_top_box">
+          <span>
+              {{conversation.name}}
+            <span *ngIf="group">({{group.members}})</span>
+          </span>
+          <!-- <ul class="window_icon">
+              <li><a href=""><img src="/assets/images/icon/icon7.png" /></a></li>
+              <li><a href=""><img src="/assets/images/icon/icon8.png" /></a></li>
+              <li><a href=""><img src="/assets/images/icon/icon9.png" /></a></li>
+              <li><a href=""><img src="/assets/images/icon/icon10.png" /></a></li>
+          </ul> -->
+          <div class="extend" (click)="showDetail()" [class.extend-active]="isShowDetail">
+                <i class="icon ion-ios-more"></i>
+          </div>
+          <!-- 侧边栏内容 -->
+          <!-- <div id="doc-oc-demo3" class="am-offcanvas">
+              <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+                  <div class="am-offcanvas-content">
+                      <p><a href="http://music.163.com/#/song?id=385554" target="_blank">网易音乐</a></p>
+                  </div>
+              </div>
+          </div> -->
+      </div>
+  </div>
+  <div class="dropBox" style="position: relative;"   (drop)="ondrop($event)" (dragenter)="ondragenter($event)" (dragover)="ondragover($event)" (dragleave)="ondragleave($event)">
+    <div style="overflow-y: hidden;">
+        <!--聊天内容-->
+        <div class="windows_body">
+            <div class="office_text" style="height: 100%;overflow-y: scroll" #scrollBox>
+                <ul class="content" #chatBox>
+                    <app-message-template *ngFor="let item of messages" [message]="item"></app-message-template>
+                </ul>
+            </div>
+            <div class="modal_time" style="position: absolute;"><span style="top: 0; opacity: 1;" #time></span></div>
+        </div>
+
+        <div class="windows_input">
+            <span class="icon-button" style="margin-bottom: -2px;"><i class="icon ion-md-happy" title="表情" [matMenuTriggerFor]="aboveMenu"></i></span>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+                    <ul class="emojPanel">
+                        <li *ngFor="let item of emojs" class="emoj" (click)="inserEmoj(item)">{{item}}</li>
+                    </ul>
+            </mat-menu>
+            <div class="input-view" contenteditable="true" #inputView placeholder="输入消息..." (input)="oninput($event)" (paste)="paste($event)" (keypress)="onkeypress($event)"></div>
+            <span class="icon-button glyphicon glyphicon-paperclip" title="上传文件" (click)="openFile()" #btnFile></span>
+            <span class="icon-button send" (click)="send()" title="按回车键发送" #btnSend><i class="icon ion-md-send" ></i></span>
+            <div class="tip_friends" #tipFriends>
+                <ul>
+                    <li *ngFor="let item of searchUsers" (click)="clickTip(item)">
+                        <span *ngIf="item.userId===0" style="width: 25px;height: 25px;text-align: center;line-height: 25px;font-size: 20px;margin-left: 0px;color: #3897F0;">
+                            <i class="icon ion-ios-people" style="float: none;"></i>
+                        </span>
+                        <app-head [head]="item.head" [name]="item.nickName" *ngIf="item.userId!=0"></app-head>
+                        <span>{{item.nickName}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="drop-modal" #dropModal>
+            <span><i class="icon ion-md-images"></i>拖动文件即可发送</span>
+        </div>
+    </div>
+ </div>
+</div>
+<div class="talk_window no-conversation" [style.display]="isShow?'none':'table'">
+    <div style="font-size: 24px;text-align: center;display: table-cell;vertical-align: middle;color:#8f8f8f;">
+        <app-head [head]="setting.Head" [name]="setting.NickName"></app-head>
+        <label style="display:block;margin:0 auto;">{{setting.NickName}}</label>
+        <span>欢迎使用IChat</span>
+    </div>
+</div>
+<script type="module" *ngIf="conversation">
+    $(".office_text").panel({iWheelStep:32});
+  </script>

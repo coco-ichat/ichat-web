@@ -1,0 +1,36 @@
+export class Conversation{
+    id:number=0;
+    userId:number;
+    receiverId:number=0;
+    groupId:number=0;
+    isPinTop:boolean=false;
+    topTime:Date;
+    head:string;
+    name:string;
+    endTime:Date;
+    endContent:string;
+    noReads:number=0;
+    isMute:boolean=false;
+    status:number;
+    updateTime:Date;
+    readEndId:number;
+    isTip:boolean=false;
+    setValue(model:Conversation){
+        this.id=model.id;
+        this.userId=model.userId;
+        this.receiverId=model.receiverId;
+        this.groupId=model.groupId;
+        this.isPinTop=model.isPinTop;
+        this.topTime=model.topTime;
+        this.head=model.head;
+        this.name=model.name;
+        this.endTime=model.endTime;
+        this.endContent=model.endContent;
+        this.noReads=model.noReads;
+        this.isMute=model.isMute;
+        this.status=model.status;
+        this.updateTime=model.updateTime;
+        this.readEndId=model.readEndId;
+        this.isTip=model.isTip;
+    }
+}

@@ -1,0 +1,116 @@
+.user-add{
+    width: 30px;
+    height: 30px;
+    float: right;
+    background-image: url(/assets/images/icon/user-add.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    &:hover{
+        background-image: url(/assets/images/icon/user-add-1.png);
+    }
+}
+.group-head{
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin-left: 10px;
+    border-radius: 50%;
+    &:hover{
+        span{
+            bottom: 0px;
+            transition: bottom ease 0.4s;
+        }
+    }
+    img,label{
+        margin-left:0;
+    }
+    span{
+        width: 70px;
+        height: 25px;
+        background-color: #00000070;
+        z-index: 1;
+        display: block;
+        position: absolute;
+        bottom: -25px;
+        color: white;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+        transition: bottom ease 0.4s;
+        i{
+            float: none;
+            width: auto;
+        }
+    }
+}
+.input-name{
+    width: 140px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    display: none;
+}
+.conversation-name{
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px;
+    padding-left: 10px;
+    padding-bottom:10px;
+    width: 150px;
+    margin-right: 20px;
+    &:after{
+        content:'';
+        width: 0px;
+        height: 2px;
+        display: block;
+        transition: width ease 0.3s,background ease 0.2s;
+    }
+    &.focus:after{
+        width: 100%;
+        background:#3897F0; 
+    }
+    .editor-name{
+        font-size: 18px;
+        margin-bottom: 0px;
+        color: #333;
+        width: 115px;
+        overflow: hidden;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        outline: none;
+        display: inline-block;
+        max-height:25px;
+    }
+    i{
+        float: right;
+        width: auto;
+        display: inline-block;
+        font-size: 19px;
+        color: #8f8f8f;
+        cursor: pointer;
+        margin-left: 2px;
+        line-height: 25px;
+    }
+}
+
+.ion-md-more{
+    float: right;font-size: 24px;text-align: center;line-height: 62px;cursor: pointer;
+    &:hover{
+        color:#3897F0
+    }
+}
+.info-setting{
+    .mat-menu-item{
+        color:#333;
+    }
+    .mat-menu-item-highlighted:not([disabled]), .mat-menu-item.cdk-keyboard-focused:not([disabled]), .mat-menu-item.cdk-program-focused:not([disabled]), .mat-menu-item:hover:not([disabled]) {
+        background: #E7E7E7;
+    }
+}

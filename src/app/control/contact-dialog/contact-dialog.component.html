@@ -1,0 +1,35 @@
+<div class="contact">
+    <div class="head">
+      <app-head [head]="contact.head" [name]="(contact.remark&&contact.remark.length>0)?contact.remark:contact.nickName"></app-head>
+    </div>
+    <div class="row">
+      <span class="col-md-4 nickname">昵称</span>
+      <span class="col-md-8">
+        <span class="name" title="{{contact.nickName}}">{{contact.nickName}}</span>
+        <i class="icon ion-md-male" *ngIf="contact.sex==0" title="男"></i>
+        <i class="icon ion-md-female" *ngIf="contact.sex==1" title="女"></i>
+      </span>
+    </div>
+    <div class="row">
+      <span class="col-md-4">备注</span>
+      <span class="col-md-8 remark">
+        <span #remark (click)="setRemark()" class="tip" title="点击修改备注">{{(contact.remark&&contact.remark.length>0)?contact.remark:'点击添加备注'}}</span>
+        <input style="display:none;" #input (blur)="input_blur()" [(ngModel)]="content"/>
+      </span>
+    </div>
+    <div class="row" *ngIf="contact.phone">
+      <span class="col-md-4">手机号</span>
+      <span class="col-md-8">{{contact.phone}}</span>
+    </div>
+    <div class="row" *ngIf="contact.email">
+      <span class="col-md-4">邮箱</span>
+      <span class="col-md-8">{{contact.email}}</span>
+    </div>
+    <div class="row buttons">
+        <button class="btn btn-success btn-lg" (click)="sendMessage()">发送消息</button>
+    </div>
+    <div class="row buttons">
+        <button class="btn btn-danger btn-lg" (click)="deleteContact()">删除好友</button>
+    </div>
+    <span class="close" (click)="close()"><i class="icon ion-md-close"></i></span>
+</div>

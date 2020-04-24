@@ -1,0 +1,203 @@
+.add-group-container{
+    width: 600px;
+    background-color:white;
+    height:600px;
+    overflow: hidden;
+    position: relative;
+    .box-title{
+        height: 45px;
+        color: #333;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 45px;
+        padding-left: 20px;
+        border-bottom: 1px solid #E9E9E9;
+    }
+    .group-info{
+        height: 80px;
+        padding-left: 20px;
+        padding-top: 10px;
+        border-bottom: 1px solid #dddbdb;
+    }
+    .group-name{
+        float: left;
+        height: 60px;
+        line-height: 60px;
+        input{
+            height: 37px;
+            line-height: 37px;
+            margin-left: 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #dddbdb;
+            color: #333;
+            padding-left: 10px;
+        }
+    }
+    .group-head{
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        float: left;
+        background-color: #3897F0;
+        line-height: 60px;
+        font-size: 26px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        i{float:none;}
+        img{
+            display: block;
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top: 0;
+            left: 0;
+        }
+    }
+    .select-title{
+        color: #333;
+        margin-top: 0px;
+        padding: 0px;
+        line-height: 40px;
+        font-size: 14px;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    .search-bar{
+        height: 40px;
+        width:100%;
+        display:block;
+        .search-icon{
+            position: absolute;
+            color: #9e9e9e;
+            line-height: 40px;
+            font-size: 20px;
+            padding-left: 10px;
+            margin-top: -2px;
+        }
+        input{
+            outline: none;
+            padding-left: 30px;
+            padding-right: 30px;
+            width: 100%;
+            height: 35px;
+            line-height: 40px;
+            border: none;
+            border-bottom: 1px solid #dddbdb;
+            color: #333;
+        }
+        .clear{
+            clear: both;
+            position: absolute;
+            color: white;
+            right: 0;
+            top: 0;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #BDBDBD;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 7px;
+            font-size: 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        i{
+            width: auto;
+            float: none;
+        }
+    }
+    .buttons{
+        height: 50px;
+        line-height: 50px;
+        padding: 0px;
+        text-align: right;
+        padding-right: 20px;
+        .btn-danger{
+            margin-right: 10px;
+            outline: none;
+            color: #808080;
+            background-color: #ffffff;
+            border-color: #BDBDBD;
+            &:hover{
+                background-color: #eaeaea;
+            }
+        }
+        .btn-success{
+            background-color: #3897F0;
+            border-color: #3897F0;
+            outline: none;
+            &:hover{
+                background-color: #1b8af3;
+                border-color: #1b8af3;
+            }
+        }
+    }
+    .remove span{
+        width: 20px;
+        height: 20px;
+        background-color: #BDBDBD;
+        display: inline-block;
+        line-height: 20px;
+        border-radius: 15px;
+        font-size: 15px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: -5px;
+        &:hover{
+            background-color: #8e8e8e;
+        }
+       
+     }
+    .col-md-6{
+        height:100%;
+        padding:0px;
+        &:first-child{
+            border-right: 1px solid #dddbdb;
+        }
+    }
+    .title{
+        padding:0px;padding-left: 25px;
+    }
+    .friends_box{
+        display:table;
+        padding-top:5px;
+        padding-bottom:5px;
+        padding-left:20px;
+    }
+    .friends_list{
+        height:100%;
+        overflow: auto;
+        li{
+            border-bottom:none;
+        }
+    }
+    .friends_check{
+        float:right;
+        line-height: 40px;
+        margin-right: 20px;
+    }
+    .close{
+        width: 50px;
+        height: 45px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 24px;
+        text-align: center;
+        font-size: 24px;
+        text-align: center;
+        color: #949494;
+        opacity: 1;
+        cursor: pointer;
+        line-height: 45px;
+        &:hover{
+            background-color:#E7505A;
+            color:white;
+        }
+    }
+}

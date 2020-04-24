@@ -1,0 +1,41 @@
+<div class="group-admin-container">
+  <div class="row" class="box-title">
+    管理员
+  </div>
+  <div class="row" style="height: calc(100% - 30px);">
+    <div class="col-md-12" style="padding: 0px;">
+        <div class="search-bar">
+          <span class="search-icon">
+            <i class="icon ion-md-search"></i>
+          </span>
+          <input type="text" [(ngModel)]="searchText" placeholder="搜索"/>
+          <span class="clear" (click)="onClear()" [style.display]="searchText.length>0?'block':'none'"><i class="icon ion-md-close"></i></span>
+        </div>
+       
+        <ul class="friends_list" style="max-height: 470px;">
+            <li *ngFor="let item of admins">
+              <div class="friends_box">
+                  <div class="user_head">
+                      <app-head [head]="item.head" [name]="item.nickName"></app-head>
+                  </div>
+                  <div class="friends_text">
+                      <p class="user_name">{{item.nickName}}</p>
+                  </div>
+                  <div class="remove-admin" (click)="removeAdmin(item)">
+                      移除
+                  </div>
+              </div>
+            </li>
+        </ul>
+    </div>
+    <div class="no-admin" *ngIf="admins.length===0">
+      {{isSearch?'没有搜索到符合条件的用户':'本群暂无管理员'}}
+    </div>
+    <div class="row buttons">
+      <button class="btn btn-danger" (click)="close()">关闭</button>
+      <button class="btn btn-success" (click)="add()">添加管理员</button>
+   </div>
+  </div>
+ 
+<span class="close" (click)="close()"><i class="icon ion-md-close"></i></span>
+</div>

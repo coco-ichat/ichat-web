@@ -1,0 +1,78 @@
+<div class="add-group-container">
+  <div class="row" class="box-title">
+    创建群组
+  </div>
+  <div class="row" style="height: calc(100% - 45px);">
+    <div class="col-md-6">
+        <div class="search-bar">
+          <span class="search-icon">
+            <i class="icon ion-md-search"></i>
+          </span>
+          <input type="text" [(ngModel)]="searchText" placeholder="搜索"/>
+          <span class="clear" (click)="onClear()" [style.display]="searchText.length>0?'block':'none'"><i class="icon ion-md-close"></i></span>
+        </div>
+        <ul class="friends_list" style="height: calc(100% - 40px);"  [style.display]="searchText.length>0?'none':'block'">
+            <li *ngFor="let group of groups">
+              <p class="title">{{group.title}}</p>
+              <div class="friends_box" *ngFor="let item of group.friends" (click)="onChange($event,item)">
+                  <div class="user_head">
+                      <app-head [head]="item.head" [name]="item.remark==null?item.nickName:item.remark"></app-head>
+                  </div>
+                  <div class="friends_text">
+                      <p class="user_name">{{item.remark==null?item.nickName:item.remark}}</p>
+                  </div>
+                  <div class="friends_check">
+                      <mat-checkbox  [checked]="item.checked"></mat-checkbox>
+                  </div>
+              </div>
+            </li>
+        </ul>
+        <ul class="friends_list" style="height: calc(100% - 40px);"  [style.display]="searchText.length>0?'block':'none'">
+            <li>
+                <div class="friends_box" *ngFor="let item of searchFriends" (click)="onChange($event,item)">
+                    <div class="user_head">
+                        <app-head [head]="item.head" [name]="item.remark==null?item.nickName:item.remark"></app-head>
+                    </div>
+                    <div class="friends_text">
+                        <p class="user_name">{{item.remark==null?item.nickName:item.remark}}</p>
+                    </div>
+                    <div class="friends_check">
+                        <mat-checkbox [checked]="item.checked"></mat-checkbox>
+                    </div>
+                </div>
+              </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div class="group-info">
+          <div class="group-head"  title="点击上传图片" (click)="takePhoto()">
+            <i class="icon ion-md-image"></i>
+            <img #groupHead style="display:none;"/>
+          </div>
+          <div class="group-name"><input placeholder="群组名称" [(ngModel)]="groupName"/></div>
+        </div>
+        <div class="select-title"> 已选择(<span style="font-weight: 600;">{{selectedFriends.length}}</span>/1000)</div>
+        <ul class="friends_list" style="height: calc(100% - 170px);" #selctedView>
+            <li>
+              <div class="friends_box" *ngFor="let item of selectedFriends">
+                  <div class="user_head">
+                      <app-head [head]="item.head" [name]="item.remark==null?item.nickName:item.remark"></app-head>
+                  </div>
+                  <div class="friends_text">
+                      <p class="user_name">{{item.remark==null?item.nickName:item.remark}}</p>
+                  </div>
+                  <div class="friends_check remove" (click)="onRemove(item)">
+                      <span title="移除"><i class="icon ion-md-close"></i></span>
+                  </div>
+              </div>
+            </li>
+          </ul>
+          <div class="row buttons">
+              <button class="btn btn-danger" (click)="close()">取消</button>
+              <button class="btn btn-success" (click)="create()" [disabled]="selectedFriends.length>=2?'':'disabled'">创建群组</button>
+          </div>
+    </div>
+  </div>
+ 
+<span class="close" (click)="close()"><i class="icon ion-md-close"></i></span>
+</div>

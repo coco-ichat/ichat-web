@@ -1,0 +1,34 @@
+<div class="middle on" #box>
+  <div class="wx_search">
+      <input type="text" disabled="disabled" placeholder="搜索会话" />
+  </div>
+  <div class="office_text" #scrollBox>
+      <ul class="user_list" >
+          <li *ngFor="let item of conversations" [class.user_active]="item===selectedItem" [class.pin]="item.isPinTop"  (click)="itemClick(item)" (contextmenu)="oncontextmenu($event,item)">
+              <div class="user_head">
+                  <app-head [head]="item.head" [name]="item.name"></app-head>
+              </div>
+              <div class="user_text">
+                  <p class="user_name">
+                      <span>{{item.name}}</span>
+                      <i class="icon ion-ios-people con_icon" *ngIf="item.groupId>0"></i>
+                      <i class="icon ion-md-volume-off con_icon" *ngIf="item.isMute"></i>
+                   </p>
+
+                  <p class="user_message">
+                      <span style="color:#E7505A;" *ngIf="item.isTip">[有人@你]</span>
+                      {{item.endContent}}</p>
+              </div>
+              <div class="user_time">
+                  <p>{{item.endTime|msgDate}}</p>
+                  <span *ngIf="item.noReads>0" class="con_nonum">{{item.noReads}}</span>
+              </div>
+          </li>
+      </ul>
+    </div>
+    <div class="right_menu" #menu>
+        <ul>
+            <li *ngFor="let item of menus" (click)="onmenuclick(item)">{{item.name}}</li>
+        </ul>
+    </div>
+  </div>

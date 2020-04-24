@@ -1,0 +1,106 @@
+<div class="box">
+  <div class="chatBox">
+
+      <div class="sidestrip">
+          <div class="am-dropdown">
+              <!--头像插件-->
+              <div class="own_head" (click)="showInfo()">
+                  <app-head [head]="Setting.Head" [name]="Setting.NickName"></app-head>
+              </div>
+          </div>
+          <!--三图标-->
+          <div class="sidestrip_icon">
+              <a class="si_1" [class.selected]="selected===1" (click)="selectedPanel(1)" title="会话列表"></a>
+              <a class="si_6" [class.selected]="selected===6" (click)="selectedPanel(6)" title="新建群组"></a>
+              <a class="si_4" [class.selected]="selected===4" (click)="selectedPanel(4)" title="添加好友"></a>
+              <a class="si_5" [class.selected]="selected===5" (click)="selectedPanel(5)" title="好友请求">
+                  <span *ngIf="friendReqCount>0">{{friendReqCount}}</span>
+              </a>
+              <a class="si_2" [class.selected]="selected===2" (click)="selectedPanel(2)" title="联系人列表"></a>
+              <a class="si_3" [class.selected]="selected===3" (click)="selectedPanel(3)" title="收藏夹" style="display: none;"></a>
+          </div>
+
+          <!--底部扩展键-->
+          <div style="display: none;">
+              <div class="am-dropdown" id="doc-dropdown-js" style="position: initial;">
+                  <div class="sidestrip_bc am-dropdown-toggle"></div>
+                  <!-- <ul class="am-dropdown-content" style="">
+                      <li>
+                          <a href="#" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 400, height: 225}">意见反馈</a>
+                          <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+                              <div class="am-modal-dialog">
+                                  <div class="am-modal-hd">
+                                      Modal 标题
+                                      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                                  </div>
+                                  <div class="am-modal-bd">
+                                      Modal 内容。本 Modal 无法通过遮罩层关闭。
+                                  </div>
+                              </div>
+                          </div>
+                      </li>
+
+                      <li><a href="#">备份与恢复</a></li>
+                      <li><a href="#">设置</a></li>
+                  </ul> -->
+              </div>
+          </div>
+      </div>
+      <div class="personalPanel" #personal>
+        <div class="container">
+           <app-personal></app-personal>
+        </div>
+      </div>
+      <!--聊天列表-->
+      <app-conversation [style.display]="selected==1?'':'none'"></app-conversation>
+
+      <!--好友列表-->
+      <app-contact [style.display]="selected==2?'':'none'"></app-contact>
+
+      <!--程序列表-->
+      <div class="middle" [style.display]="selected==3?'block':'none'">
+          <div class="wx_search">
+              <input type="text" placeholder="搜索收藏内容" />
+              <button>+</button>
+          </div>
+          <div class="office_text">
+              <ul class="icon_list">
+                  <li class="icon_active">
+                      <div class="icon"><img src="/assets/images/icon/icon.png" alt="" /></div>
+                      <span>全部收藏</span>
+                  </li>
+                  <li>
+                      <div class="icon"><img src="/assets/images/icon/icon1.png" alt="" /></div>
+                      <span>链接</span>
+                  </li>
+                  <li>
+                      <div class="icon"><img src="/assets/images/icon/icon2.png" alt="" /></div>
+                      <span>相册</span>
+                  </li>
+                  <li>
+                      <div class="icon"><img src="/assets/images/icon/icon3.png" alt="" /></div>
+                      <span>笔记</span>
+                  </li>
+                  <li>
+                      <div class="icon"><img src="/assets/images/icon/icon4.png" alt="" /></div>
+                      <span>文件</span>
+                  </li>
+                  <li>
+                      <div class="icon"><img src="/assets/images/icon/icon5.png" alt="" /></div>
+                      <span>音乐</span>
+                  </li>
+                  <li>
+                      <div class="icon"><img src="/assets/images/icon/icon6.png" alt="" /></div>
+                      <span>标签</span>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!--聊天窗口-->
+      <app-chat></app-chat>
+      <!--会话详情-->
+      <app-conversation-detail></app-conversation-detail>
+     
+  </div>
+</div>

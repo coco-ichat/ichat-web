@@ -1,0 +1,20 @@
+<div class="row title">
+  <span (click)="close()"><i class="ion ion-md-arrow-round-back"></i></span>
+  个人信息
+</div>
+<div class="row user-head">
+  <div class="head-box">
+      <app-head [head]="Setting.Head" [name]="Setting.NickName"></app-head>
+      <span title="点击上传照片" (click)="takePhoto()"><i class="icon ion-md-camera"></i></span>
+  </div>
+</div>
+<div class="row txt">
+  <label>昵称</label>
+  <div>
+      <span class="edit-txt">{{Setting.NickName}}</span>
+      <span class="edit-btn" #btnName><i class="icon ion-md-create"></i></span>
+  </div>
+</div>
+<div class="row buttons" style="text-align: center;padding-top: 10px;">
+  <button class="btn btn-danger" (click)="exit()" style="width: 120px;height:40px;" >退出登录</button>
+</div>

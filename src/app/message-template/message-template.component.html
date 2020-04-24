@@ -1,0 +1,67 @@
+<li [class]="isMe?'me':'other'" *ngIf="message.msgType<5">
+  <app-head [head]="message.head" [name]="message.nickName"></app-head>
+  <span *ngIf="message.groupId>0&&!isMe" style="display: block;color: #a2a2a2;margin-left: 45px;">{{user.name}}</span>
+    <!-- 文本消息 -->
+    <div *ngIf="message.msgType==0" class="msg msg_text">
+      <span>{{message.content}}</span>
+      <span>{{message.addTime|date:'HH:mm'}}</span>
+    </div>
+    <!-- 图文消息 -->
+    <span *ngIf="message.msgType==1" class="msg msg_img" (click)="showImg()">
+      <span style="display: table-cell;vertical-align: middle;">
+        <img [style.width]="media.Width+'px'" [style.height]="media.Height+'px'" src="{{media.Path}}" (error)="error()" #img/>
+      </span>
+      <span class="msg_time">{{message.addTime|date:'HH:mm'}}
+          <i class="icon ion-ios-time" style="float: none;" *ngIf="!(message.id>0)"></i>
+          <i class="icon ion-md-checkmark" style="float: none;" *ngIf="message.id>0"></i>
+      </span>
+    </span>
+    <!-- 语音消息 -->
+    <span *ngIf="message.msgType==2&&isMe" class="msg msg_voice" title="点击播放语音消息" (click)="playVoice($event)" [style.width]="((media.Time/60000*200)+100)+'px'">
+      <span style="font-size: 12px;margin-right: 10px;">{{media.Time|voiceTimeFmt}}"</span>
+      <span class="voice_icon_me voice"></span>
+      <span>{{message.addTime|date:'HH:mm'}}</span>
+    </span>
+    <span *ngIf="message.msgType==2&&!isMe" class="msg msg_voice" title="点击播放语音消息" (click)="playVoice($event)" [style.width]="((media.Time/60000*200)+100)+'px'">
+        <span class="voice_icon voice"></span>
+        <span style="font-size: 12px;margin-right: 20px;margin-left: 15px;">{{media.Time|voiceTimeFmt}}"</span>
+        <span>{{message.addTime|date:'HH:mm'}}</span>
+      </span>
+    <!-- 文件消息 -->
+    <span *ngIf="message.msgType==3" class="msg msg_file" title="立即下载" (click)="download()">
+      <span class="file_icon"><i class="icon ion-md-document"></i></span>
+      <span class="file_name">{{media.Name}}</span>
+      <span class="file_size">{{media.Size|sizeFmt}}</span>
+      <span class="msg_time">{{message.addTime|date:'HH:mm'}}</span>
+    </span>
+    <!-- 视频消息 -->
+    <span *ngIf="message.msgType==4" class="msg msg_video_img" (click)="playVideo()">
+      <img width="{{media.ThumWidth}}" height="{{media.ThumHeight}}" src="{{media.Thum}}" onerror="this.src='/assets/images/error.jpg'"/>
+      <span class="video_time">{{media.Time|mediaDate}}</span>
+      <span class="msg_time">{{message.addTime|date:'HH:mm'}}
+          <i class="icon ion-ios-time" style="float: none;" *ngIf="!(message.id>0)"></i>
+          <i class="icon ion-md-checkmark" style="float: none;" *ngIf="message.id>0"></i>
+      </span>
+      <span class="video_play"></span>
+    </span>
+</li>
+<!--系统消息-->
+<li *ngIf="message.msgType==5" class="msg_system">
+  <span>{{message.content}}</span>
+</li>
+<!--时间消息-->
+<li *ngIf="message.msgType==999" class="msg_system system_time">
+  <span>{{message.content}}</span>
+</li>
+<!--好友通过消息-->
+<li *ngIf="message.msgType==6" class="msg_system msg_friend">
+  <span>{{message.content}}</span>
+</li>
+<!--未读提示-->
+<li *ngIf="message.msgType==888" class="msg_tip" style="float: right;margin-top: 10px;width: 100%;">
+  <div style="display: flex;flex-direction: row;flex-grow: 1;align-items: center;">
+      <span style="flex-grow: 1;height: 1px;background-color: #3897F0;"></span>
+      <span style="padding-left: 10px;padding-right: 10px;color: #3897F0;font-size: 14px;">{{message.content}}</span>
+      <span style="flex-grow: 1;height: 1px;background-color: #3897F0;"></span>
+  </div>
+</li>

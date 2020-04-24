@@ -1,0 +1,158 @@
+<div class="login">
+  <div class="logo">
+    <a href="javascript:void(0);">
+      IChat
+    </a>
+  </div>
+<div class="content">
+    <div class="login-form" #loginForm>
+        <h3 class="form-title" style="font-family: 微软雅黑;">登录你的帐号</h3>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">登录手机号</label>
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input [(ngModel)]="model.account" class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="邮箱/手机号" name="UserPhone" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">登录密码</label>
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input [(ngModel)]="model.password" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="UserPassword" />
+            </div>
+        </div>
+        <div class="form-actions">
+            <mat-checkbox [(ngModel)]="model.isAutoLogin" name="CS2D5">自动登录</mat-checkbox>
+            <button type="submit" class="btn green pull-right" (click)="loginAction()"> 登录 </button>
+        </div>
+        <div class="create-account">
+            <h4 style="font-family: 微软雅黑;">没有帐号 ?</h4>
+            <a href="javascript:;" (click)="create()"> 立即创建一个帐号 </a>
+        </div>
+    </div>
+    <form class="register-form" #registerForm #form2="ngForm" style="display: none;">
+        <h3 style="font-family: 微软雅黑;">创建帐户</h3>
+        <p> 在下面输入你的帐户信息: </p>
+        <div class="form-group">
+          <label class="control-label  visible-ie8 visible-ie9">性别</label>
+          <div class="input-icon" style="text-align: center;">
+            <mat-radio-group [(ngModel)]="registModel.sex" name="sex">
+              <mat-radio-button value="0">
+                <i class="icon ion-md-male" title="男"></i>
+              </mat-radio-button>
+              <mat-radio-button value="1">
+                <i class="icon ion-md-female" title="女"></i>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="form-group" [class.has-error]="nickName.invalid && nickName.errors && (nickName.dirty || nickName.touched)">
+            <label class="control-label  visible-ie8 visible-ie9">昵称</label>
+            <div class="input-icon">
+                <i class="fa fa-font"></i>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="昵称" name="nickName" [(ngModel)]="registModel.nickName" #nickName="ngModel" required maxlength="20"/>
+            </div>
+            <div *ngIf="nickName.invalid &&nickName.errors&& (nickName.dirty || nickName.touched)">
+              <span *ngIf="nickName.errors.required" class="help-block">请输入昵称.</span>
+              <span *ngIf="nickName.errors.maxlength" class="help-block">昵称最多20个字符.</span>
+            </div>
+        </div>
+        <div class="form-group" [class.has-error]="phone.invalid &&phone.errors&& (phone.dirty || phone.touched)">
+          <label class="control-label  visible-ie8 visible-ie9">注册手机号</label>
+          <div class="input-icon">
+              <i class="fa fa-mobile-phone"></i>
+              <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="手机号" name="phone" [(ngModel)]="registModel.phone" #phone="ngModel" required pattern="1[0-9][0-9]{9}" appPhoneValidator/>
+          </div>
+          <div *ngIf="phone.invalid &&phone.errors&& (phone.dirty || phone.touched)">
+            <span *ngIf="phone.errors.required" class="help-block">请输入手机号.</span>
+            <span *ngIf="phone.errors.pattern" class="help-block">请输入正确的手机号.</span>
+            <span *ngIf="phone.errors.phoneValidator" class="help-block">该手机号已经被注册</span>
+          </div>
+        </div>
+        <div class="form-group" [class.has-error]="email.invalid &&email.errors&& (email.dirty || email.touched)">
+          <label class="control-label  visible-ie8 visible-ie9">注册邮箱</label>
+          <div class="input-icon">
+              <i class="fa fa-envelope"></i>
+              <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="邮箱" name="email" [(ngModel)]="registModel.email" #email="ngModel" required pattern="([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,8})" appEmailValidator/>
+          </div>
+          <div *ngIf="email.invalid &&email.errors&& (email.dirty || email.touched)">
+            <span *ngIf="email.errors.required&& (email.dirty || email.touched)" class="help-block">请输入邮箱.</span>
+            <span *ngIf="email.errors.pattern" class="help-block">请输入正确的邮箱.</span>
+            <span *ngIf="email.errors.emailValidator" class="help-block">该邮箱已经被注册</span>
+          </div>
+        </div>
+        <div class="form-group" [class.has-error]="password.invalid &&password.errors&& (password.dirty || password.touched)">
+            <label class="control-label  visible-ie8 visible-ie9">密码</label>
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="password" [(ngModel)]="registModel.password" #password="ngModel" required minlength="6" maxlength="16"/>
+            </div>
+            <div *ngIf="password.invalid &&password.errors&& (password.dirty || password.touched)">
+              <span *ngIf="password.errors.required" class="help-block">请输入密码.</span>
+              <span *ngIf="password.errors.minlength||password.errors.maxlength" class="help-block">密码在6~16个字符串.</span>
+            </div>
+        </div>
+        <div class="form-group" [class.has-error]="passwordRepeat.invalid &&passwordRepeat.errors&& (passwordRepeat.dirty || passwordRepeat.touched)">
+            <label class="control-label  visible-ie8 visible-ie9">重复密码</label>
+            <div class="controls">
+                <div class="input-icon">
+                    <i class="fa fa-check"></i>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="重复密码" name="passwordRepeat" [(ngModel)]="registModel.passwordRepeat" #passwordRepeat="ngModel" required minlength="6" maxlength="16"/>
+                </div>
+            </div>
+            <div *ngIf="passwordRepeat.invalid &&passwordRepeat.errors&& (passwordRepeat.dirty || passwordRepeat.touched)">
+              <span *ngIf="passwordRepeat.errors.required" class="help-block">请输入重复密码.</span>
+              <span *ngIf="passwordRepeat.errors.minlength||passwordRepeat.errors.maxlength" class="help-block">密码在6~16个字符串.</span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" class="btn red btn-outline" style="font-family: 微软雅黑;" (click)="back()"> 返 回 </button>
+            <button type="button" class="btn green pull-right" style="font-family: 微软雅黑;" [disabled]="form2.invalid"  (click)="register()"> 创 建 </button>
+        </div>
+    </form>
+    <div class="forget-form" #forgetForm style="display: none;">
+        <h3 style="font-family: 微软雅黑;">忘记密码</h3>
+        <p> 在下面输入你的帐户信息: </p>
+        <div class="form-group">
+            <label class="control-label">注册手机号</label>
+            <div class="input-icon">
+                <i class="fa fa-mobile-phone"></i>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="注册手机号" name="ForgetPhone" id="ForgetPhone" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">验证码</label>
+            <div class="input-group">
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="验证码" name="ForgetCode" id="ForgetCode" />
+                </div>
+                <span class="input-group-btn">
+                    <button class="btn green" type="button" id="btnForgetSendCode">发送验证码</button>
+                </span>
+            </div>
+            <span id="ForgetCode-error" class="help-block" style="color: #e73d4a;"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">新密码</label>
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="forget_password" placeholder="密码" name="ForgetPassword" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">重复密码</label>
+            <div class="controls">
+                <div class="input-icon">
+                    <i class="fa fa-check"></i>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="重复密码" name="ForgetPasswordRepeat" />
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button id="forget-back-btn" type="button" class="btn red btn-outline" style="font-family: 微软雅黑;"> 返 回 </button>
+            <button type="submit" id="forget-submit-btn" class="btn green pull-right" style="font-family: 微软雅黑;"> 修改 </button>
+        </div>
+    </div>
+</div>
+</div>
