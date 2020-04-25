@@ -1,7 +1,9 @@
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/)
 
 # ichat-web
-ichat web
+[![GitHub stars](https://img.shields.io/github/stars/coco-ichat/ichat-web)](https://github.com/coco-ichat/ichat-web/stargazers) [![GitHub forks](https://img.shields.io/github/forks/coco-ichat/ichat-web)](https://github.com/coco-ichat/ichat-web) [![GitHub issues](https://img.shields.io/github/issues/coco-ichat/ichat-web)](https://github.com/coco-ichat/ichat-web/issues) <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5tBvVUn"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="flutter-candies" title="flutter-candies"></a>
+
+ichat聊天软件Web端
 
 # 效果图
 
@@ -78,7 +80,7 @@ ichat web
 # 使用教程
 1. 在开始之前，请确保你的开发环境中包括 Node.js和 npm 包管理器。Angular 需要 Node.js 版本 10.9.0 或更高版本。
 2. 安装Angluar CLI `npm install -g @angular/cli@8.2.1`。
-3. 下载项目用Visual Studio Code打开
+3. 下载项目用`Visual Studio Code`打开
 4. 在终端输入`npm install`自动安装项目需要的包
 5. 修改`src/environments/`目录下的`environment.ts`文件与`environment.prod.ts`文件
 
